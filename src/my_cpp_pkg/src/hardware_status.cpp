@@ -33,7 +33,7 @@ int main(int argc, char * argv[])
     rclcpp::init(argc, argv);
 
     auto node = std::make_shared<HardwareStatusNode>();
-    // RCLCPP_INFO(node3->get_logger(), "Hello World! from node2");
+    RCLCPP_INFO(node->get_logger(), "Hello World! from node2");
     // testing git commit again
 
     rclcpp::spin(node);
