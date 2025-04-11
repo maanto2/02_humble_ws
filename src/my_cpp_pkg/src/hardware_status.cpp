@@ -37,6 +37,7 @@ int main(int argc, char * argv[])
 
     rclcpp::spin(node);
     rclcpp::shutdown();
+    //oka to goooo
     return 0;
 
 }
