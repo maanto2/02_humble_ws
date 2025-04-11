@@ -36,7 +36,7 @@ int main(int argc, char * argv[])
     RCLCPP_INFO(node->get_logger(), "Hello World! from node2");
     rclcpp::spin(node);
     rclcpp::shutdown();
-    //oka to go
+    //oka to goooo
     return 0;
 
 }
