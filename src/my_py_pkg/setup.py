@@ -25,6 +25,8 @@ setup(
             " add_ints_server_node = my_py_pkg.add_two_ints_server:main",
             " add_ints_client_node = my_py_pkg.add_two_ints_client:main",
             " hardware_status_node = my_py_pkg.hardware_publisher:main",
+            " led_panel_status_node = my_py_pkg.led_panel:main",
+            " led_panel_client_node = my_py_pkg.led_panel_client:main",
         ],
     },
 )

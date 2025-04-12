@@ -22,7 +22,7 @@ private:
         message.debug_message = "Motors are ready";
         pub_->publish(message);
     }
-    rclcpp::TimerBase::SharedPtr timer_ ;P
+    rclcpp::TimerBase::SharedPtr timer_ ;
     rclcpp::Publisher<my_robot_interfaces::msg::HardwareStatus>::SharedPtr pub_ ;
 };
 

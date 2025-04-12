@@ -1,0 +1,3 @@
+float64 temperature
+bool battery_charged
+string debug_message
