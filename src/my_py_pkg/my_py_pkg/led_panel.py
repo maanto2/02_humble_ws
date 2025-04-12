@@ -20,12 +20,9 @@ class LedPanelNode(Node):
         if request.state == "on":
             response.status = True
             response.ack = "leds turned on"
-        elif request.state == "off ":
-            response.status = True
-            response.ack = "leds turned off"
-        else:
+        elif request.state == "off":
             response.status = False
-            response.ack = "Invalid state"
+            response.ack = "leds turned off"
         return response
 
 

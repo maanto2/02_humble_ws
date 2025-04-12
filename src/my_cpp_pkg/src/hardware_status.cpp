@@ -34,11 +34,6 @@ int main(int argc, char * argv[])
 
     auto node = std::make_shared<HardwareStatusNode>();
     RCLCPP_INFO(node->get_logger(), "Hello World! from node2");
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> new-codes
     rclcpp::spin(node);
     rclcpp::shutdown();
     //oka to goooo
