@@ -22,7 +22,7 @@ private:
         message.debug_message = "Motors are ready";
         pub_->publish(message);
     }
-    rclcpp::TimerBase::SharedPtr timer_ ;P
+    rclcpp::TimerBase::SharedPtr timer_ ;
     rclcpp::Publisher<my_robot_interfaces::msg::HardwareStatus>::SharedPtr pub_ ;
 };
 
@@ -34,7 +34,11 @@ int main(int argc, char * argv[])
 
     auto node = std::make_shared<HardwareStatusNode>();
     RCLCPP_INFO(node->get_logger(), "Hello World! from node2");
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> new-codes
     rclcpp::spin(node);
     rclcpp::shutdown();
     //oka to goooo

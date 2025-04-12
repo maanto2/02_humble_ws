@@ -1,0 +1,8 @@
+# Request
+int64 led
+string state
+
+---
+# Response
+bool status
+string ack
