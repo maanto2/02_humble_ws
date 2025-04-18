@@ -5,12 +5,10 @@
     </link>
 
     <link name="base_link">
-
         <visual>
             <geometry>
                     <mesh filename="package://bumper_bot_description/meshes/base_link.STL"/>      
-                    <!-- <mesh filename="file://$(find bumper_bot_description)/meshes/base_link.STL"/> -->
-                            
+                    <!-- <mesh filename="file://$(find bumper_bot_description)/meshes/base_link.STL"/> -->       
             </geometry>
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </visual>
@@ -20,17 +18,24 @@
         <parent link="base_footprint"/>
         <child link="base_link"/>
         <origin xyz="0 0 0.033" rpy="0 0 0"/>
-        
     </joint>
 
-    <link>
-        <name>laser_link</name>
+
+
+    <link name="left_wheel_link">
         <visual>
             <geometry>
-                <mesh filename="package://bumper_bot_description/meshes/laser.STL"/>
+                <mesh filename="package://bumper_bot_description/meshes/caster_front_link.STL"/>      
             </geometry>
-            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
         </visual>
     </link>
+
+    <joint name="left_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="left_wheel_link"/>
+        <origin xyz="0.33 0 0" rpy="0 0 0"/>
+    </joint>
+
 
 </robot>
