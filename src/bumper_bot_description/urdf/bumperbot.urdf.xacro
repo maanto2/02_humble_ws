@@ -25,16 +25,64 @@
     <link name="left_wheel_link">
         <visual>
             <geometry>
+                <mesh filename="package://bumper_bot_description/meshes/wheel_left_link.STL"/>      
+            </geometry>
+            <origin xyz="0 0 0" rpy="-1.57 0 0"/>
+        </visual>
+    </link>
+
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel_link"/>
+        <axis xyz="0.0 1.0 0.0"/>
+        <origin xyz="0 0.07 0" rpy="0 0 0"/>
+    </joint>
+
+  <link name="right_wheel_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://bumper_bot_description/meshes/wheel_right_link.STL"/>      
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+        </visual>
+    </link>
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel_link"/>
+        <origin xyz="0 -0.07 0" rpy="0 0 0"/>
+    </joint>
+
+
+    <link name="castor_front_link">
+        <visual>
+            <geometry>
                 <mesh filename="package://bumper_bot_description/meshes/caster_front_link.STL"/>      
             </geometry>
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </visual>
     </link>
 
-    <joint name="left_wheel_joint" type="fixed">
+    <joint name="castor_front_joint" type="fixed">
         <parent link="base_link"/>
-        <child link="left_wheel_link"/>
-        <origin xyz="0.33 0 0" rpy="0 0 0"/>
+        <child link="castor_front_link"/>
+        <origin xyz="0.04755 0 -0.0275" rpy="0 0 0"/>
+    </joint>
+
+
+    <link name="castor_back_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://bumper_bot_description/meshes/caster_rear_link.STL"/>      
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </visual>
+    </link>
+
+    <joint name="castor_back_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="castor_back_link"/>
+        <origin xyz="-0.04755 0 -0.0275" rpy="0 0 0"/>
     </joint>
 
 
