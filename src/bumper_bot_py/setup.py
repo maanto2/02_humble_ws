@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            " simple_parameter_node = bumper_bot.simple_parameter:main",
         ],
     },
 )
