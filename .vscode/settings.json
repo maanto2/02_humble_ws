@@ -1,0 +1,12 @@
+// settings.json
+{
+    // other settings
+    "urdf-visualizer.packages": {
+        "bumper_bot_description": "/home/robinhood/02_humble_ws/src/bumper_bot_description"
+    },
+    "files.associations": {
+        "vector": "cpp"
+    },
+    // other settings
+  }
+  
