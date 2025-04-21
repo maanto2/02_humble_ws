@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            " simple_parameter_node = bumper_bot.simple_parameter:main",
+            " simple_parameter_node = bumper_bot_py.simple_parameter:main",
+            " simple_turtlesim_kinematics_node = bumper_bot_py.simple_turtlesim_kinematics:main",
         ],
     },
 )
