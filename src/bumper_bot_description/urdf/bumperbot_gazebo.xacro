@@ -2,7 +2,7 @@
 
 <robot name="bumperbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<gazebo reference="wheel_left_link">
+<gazebo reference="left_wheel_link">
     <mul1>10000000000000000.0</mul1>
     <mul2>10000000000000000.0</mul2>
     <kp>10000000000000000.0</kp>
@@ -13,7 +13,7 @@
 
 </gazebo>
 
-<gazebo reference="wheel_right_link">
+<gazebo reference="right_wheel_link">
     <mul1>10000000000000000.0</mul1>
     <mul2>10000000000000000.0</mul2>
     <kp>10000000000000000.0</kp>
@@ -42,6 +42,20 @@
     <minDepth>0.0</minDepth>
     <maxVel>0.1</maxVel>
 
+</gazebo>
+
+<gazebo>
+    <xacro:if value="$(arg is_ignition)">         
+        <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+            <parameters>$(find bumperbot_controller)/config/bumperbot_controllers.yaml</parameters>
+        </plugin>
+    </xacro:if>
+
+    <xacro:unless value="$(arg is_ignition)">
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find bumperbot_controller)/config/bumperbot_controllers.yaml</parameters>
+        </plugin>
+    </xacro:unless>
 </gazebo>
 
 </robot>
