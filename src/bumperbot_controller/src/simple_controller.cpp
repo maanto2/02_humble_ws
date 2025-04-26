@@ -6,7 +6,7 @@ SimpleController :: SimpleController(const std::string &name) :Node(name)
 
 {
     declare_parameter("wheel_radius", 0.033);
-    declare_parameter("wheel_separation", 0.07);
+    declare_parameter("wheel_separation", 0.17);
 
 
     wheel_radius = get_parameter("wheel_radius").as_double();
