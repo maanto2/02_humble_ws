@@ -12,8 +12,10 @@
 
 
   <depend>rclpy</depend>
+  <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>eigen</depend>
 
 
 
