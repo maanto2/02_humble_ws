@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             " simple_parameter_node = bumper_bot_py.simple_parameter:main",
             " simple_turtlesim_kinematics_node = bumper_bot_py.simple_turtlesim_kinematics:main",
+            " simple_tf_kinematics_node = bumper_bot_py.simple_tf_kinematics:main",
         ],
     },
 )
