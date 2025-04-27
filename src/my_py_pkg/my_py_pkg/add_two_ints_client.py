@@ -13,7 +13,7 @@ class AddIntsClientNode(Node):
     def __init__(self):
         super().__init__('add_two_ints_client')
 
-        self.server = self.create_client(AddTwoInts, 'add_two_ints')
+        self.client = self.create_client(AddTwoInts, 'add_two_ints')
 
     
     def send_request(self, a, b):
@@ -22,7 +22,7 @@ class AddIntsClientNode(Node):
         request.a = a
         request.b = b
 
-        future = self.server.call_async(request)
+        future = self.client.call_async(request)
         future.add_done_callback(self.callback)
 
     def callback(self, future):
@@ -38,6 +38,7 @@ def main(args=None):
     a = int(sys.argv[1])
     b = int(sys.argv[2])
     node = AddIntsClientNode()
+    
     node.send_request(a, b)
     rclpy.spin(node) # this will block the program until the node is shutdown
     rclpy.shutdown() # this will shutdown the node
