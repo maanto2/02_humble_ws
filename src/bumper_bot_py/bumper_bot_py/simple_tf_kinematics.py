@@ -1,9 +1,13 @@
 import rclpy
 from rclpy.node import Node
 from tf2_ros.static_transform_broadcaster import StaticTransformBroadcaster
-from tf2_ros import TransformBroadcaster
+from tf2_ros import TransformBroadcaster, TransformException
+from tf2_ros.buffer import Buffer
+from tf2_ros.transform_listener import TransformListener
 from geometry_msgs.msg import TransformStamped
 import numpy as np
+from bumperbot_msgs.srv import GetTransform
+
 
 class SimpleTfKinematics(Node):
     def __init__(self):
@@ -14,6 +18,10 @@ class SimpleTfKinematics(Node):
 
         # Create a TransformBroadcaster Object
         self.dynamic_tf_broadcaster = TransformBroadcaster(self)
+
+        # Create a TransformListener Object
+        self.tf_buffer = Buffer()
+        self.tf_listener = TransformListener(self.tf_buffer, self)
 
         # create a TransformStamped object to receive the transform
         self.static_tranform_stamped = TransformStamped()
@@ -44,7 +52,27 @@ class SimpleTfKinematics(Node):
         self.w_last_ = 0.0
 
 
-    
+        self.get_transform_service = self.create_service(GetTransform, 'get_transform', self.get_transform_callback)
+
+
+
+            #method names timer_callback, this method will be called every 1 second
+    def get_transform_callback(self, request, response):
+        self.get_logger().info('Incoming request: %s and %s' % (request.frame_id, request.child_frame_id))
+        requested_transform = TransformStamped()
+        try:
+            requested_transform  = self.tf_buffer.lookup_transform(request.frame_id, request.child_frame_id, rclpy.time.Time())
+        except TransformException as e:
+            self.get_logger().error('Transform exception error on : %s and %s ' % (request.frame_id, request.child_frame_id))
+            response.transform = None
+            response.success = False
+            return response
+        
+        response.transform = requested_transform
+        response.success = True
+        self.get_logger().info('Outgoing response: %s' % (response.transform))
+        return response
+
 
     def timer_callback(self):
 
@@ -68,6 +96,9 @@ class SimpleTfKinematics(Node):
 
         self.x_last_ = self.dynamic_tranform_stamped.transform.translation.x
         self.w_last_ = self.dynamic_tranform_stamped.transform.rotation.w
+
+
+        
 
 
 def main(args=None):
